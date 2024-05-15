@@ -1,0 +1,25 @@
+  <div class="container">
+    <h1>Restaurants</h1>
+    <div class="cards">
+      <% @restaurants.each do |restaurant| %>
+      <div class="card">
+      <% random_search_word = ["food", "restaurant", "chef", "cuisine", "asian", "chinese", "burger"].sample %>
+        <img class="card-img-top" src="https://source.unsplash.com/random/250x250/?<%= random_search_word %>">
+        <div class="card-body">
+
+          <%= link_to restaurant_path(restaurant) do%>
+            <button class="card-title  btn btn-outline-secondary">
+              <%= restaurant.name %>
+            </button>
+          <% end %>
+        <p class="card-text"> <%= star_rating(restaurant.average_rating) %></p>
+        <p class="card-text badge bg-secondary"><%= restaurant.category %></p>
+        <p class="card-text"><%= restaurant.address %></p>
+        </div>
+        </div>
+      <% end %>
+  </div>
+<%= link_to new_restaurant_path do%>
+ <button type="button" class="btn btn-primary my-3">Add new Restaurant</button>
+<% end %>
+</div>

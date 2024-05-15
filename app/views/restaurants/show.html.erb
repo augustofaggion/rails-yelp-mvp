@@ -1,0 +1,19 @@
+<h1><%= @restaurant.name %></h1>
+
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.category %></p>
+<p>Average Rating: <%= @restaurant.average_rating %></p>
+
+<h2>Reviews</h2>
+  <% @restaurant.reviews.each do |review| %>
+  <div>
+      <% random_search_word = ["food", "restaurant", "chef", "cuisine", "asian", "chinese", "burger"].sample %>
+      <img src="https://source.unsplash.com/random/150x150/?<%= random_search_word %>">
+      <p>Content: <%= review.content %></p>
+      <p>Rating: <%= review.rating %></p>
+    </div>
+  <% end %>
+
+
+<%= link_to "Return home", restaurants_path %>
+<%= link_to "Add review", new_restaurant_review_path(@restaurant.id) %>
